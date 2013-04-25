@@ -3,7 +3,9 @@ package jp.mixi.assignment.controller.beg;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.util.Log;
 import android.view.Menu;
+import android.widget.Toast;
 
 /**
  * TODO: 課題1
@@ -19,6 +21,43 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Toast.makeText(this, "create", Toast.LENGTH_LONG).show();
+        Log.v("life", "ukayare create");
+    }
+    
+    @Override
+    protected void onStart() {
+    	super.onStart();
+        Toast.makeText(this, "start", Toast.LENGTH_LONG).show();
+        Log.v("life", "ukayare start");
+    }
+    
+    @Override
+    protected void onResume() {
+    	super.onResume();
+        Toast.makeText(this, "resume", Toast.LENGTH_LONG).show();
+        Log.v("life", "ukayare resume");
+    }
+
+    @Override
+    protected void onPause() {
+    	super.onPause();
+        Toast.makeText(this, "pause", Toast.LENGTH_LONG).show();
+        Log.v("life", "ukayare pause");
+    }
+
+    @Override
+    protected void onStop() {
+    	super.onStop();
+        Toast.makeText(this, "stop", Toast.LENGTH_LONG).show();
+        Log.v("life", "ukayare stop");
+    }
+
+    @Override
+    protected void onDestroy() {
+    	super.onDestroy();
+        Toast.makeText(this, "destroy", Toast.LENGTH_LONG).show();
+        Log.v("life", "ukayare destroy");
     }
 
     @Override
