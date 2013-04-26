@@ -2,12 +2,97 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity" >
+
     <!-- TODO: 左側から順に、下記の View を配置していき、そのまとまりを画面上部に揃える -->
     <!-- 1. プロフィール画像(ic_launcher)と、それを囲う四角形の枠、その下に プロフィール と書かれた文字 -->
+
+    <FrameLayout
+        android:id="@+id/prof_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/frame"
+            android:src="@drawable/ic_launcher" />
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/prof_image"
+        android:layout_below="@+id/prof_image"
+        android:text="プロフィール" />
+
     <!-- 2. 1. の右側の上半分に、ニックネームの表示と、そのさらに右端に設定アイコン -->
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/prof_image"
+        android:layout_alignTop="@+id/prof_image"
+        android:layout_toRightOf="@+id/prof_image"
+        android:text="KeithYokoma" />
+
+    <FrameLayout
+        android:id="@+id/setting_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/name"
+        android:layout_marginRight="5dp" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:src="@android:drawable/ic_menu_manage" />
+    </FrameLayout>
+
     <!-- 3. 1. の右側の下半分に、電話ボタン、メール送信ボタン、共有ボタンの 3 つを均等割付 -->
+
+    <LinearLayout
+        android:id="@+id/menu_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/name"
+        android:layout_below="@+id/line1" >
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@android:drawable/ic_menu_call" />
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@android:drawable/ic_menu_send" />
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@android:drawable/ic_menu_share" />
+    </LinearLayout>
+
     <!-- 4. 2. と 3. の間に分割線 -->
+
+    <TextView
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignLeft="@+id/name"
+        android:layout_alignRight="@+id/setting_image"
+        android:layout_below="@+id/name"
+        android:background="#000000" />
+
     <!-- 条件: 3. 以外では LinearLayout を使ってはならない -->
     <!-- Hint: 1. 画像の表示には、android:src="@drawable/ic_launcher" 属性を使います -->
     <!-- Hint: 2. 画像を表示しながら、ボタンとして機能させる特別なボタンの View があります -->
@@ -15,19 +100,154 @@
     <!-- Hint: 4. 均等割付するボタンの画像は、左から android:src="@android:drawable/ic_menu_call", android:src="@android:drawable/ic_menu_send", android:src="@android:drawable/ic_menu_share" です -->
     <!-- TODO: 上記のまとまりの下に、幅 1 dp の区切り線を引く -->
 
+    <TextView
+        android:id="@+id/line2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/menu_list"
+        android:layout_marginTop="10dp"
+        android:background="#000000" />
 
     <!-- TODO: 左側から順に、下記の View を配置していき、そのまとまりを画面下部に揃える -->
-    <!-- 1. ic_launcher のアイコンと、その下に メニュー の文字を表示し、アイコンの右肩に 30 と書かれたバッチを表示するボタン -->
-    <!-- 2. 幅 1dp の 縦の区切り線 -->
-    <!-- 3. ic_launcher のアイコンと、その右に つぶやきを投稿 の文字を表示しているボタン -->
-    <!-- 4. 幅 1dp の 縦の区切り線 -->
-    <!-- 5. ic_launcher のアイコンと、その下に 最近 の文字を表示しているボタン -->
+
+    <RelativeLayout
+        android:id="@+id/bottom_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" >
+
+        <!-- 1. ic_launcher のアイコンと、その下に メニュー の文字を表示し、アイコンの右肩に 30 と書かれたバッチを表示するボタン -->
+
+        <RelativeLayout
+            android:id="@+id/bottom_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_state_list"
+            android:padding="15dp" >
+
+            <TextView
+                android:id="@+id/bottom_menu_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/ic_launcher"
+                android:text="メニュー" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/badge"
+                android:text="30" />
+        </RelativeLayout>
+
+        <!-- 2. 幅 1dp の 縦の区切り線 -->
+
+        <TextView
+            android:id="@+id/line3"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/bottom_menu"
+            android:layout_alignTop="@+id/bottom_menu"
+            android:layout_toRightOf="@+id/bottom_menu"
+            android:background="#000000" />
+
+        <!-- 3. ic_launcher のアイコンと、その右に つぶやきを投稿 の文字を表示しているボタン -->
+
+        <RelativeLayout
+            android:id="@+id/bottom_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/bottom_menu"
+            android:layout_alignTop="@+id/bottom_menu"
+            android:layout_toRightOf="@+id/line3"
+            android:background="@drawable/button_state_list"
+            android:paddingRight="5dp" >
+
+            <ImageView
+                android:id="@+id/bottom_submit_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_launcher" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/bottom_submit_image"
+                android:text="@string/submit_str" />
+        </RelativeLayout>
+
+        <!-- 4. 幅 1dp の 縦の区切り線 -->
+
+        <TextView
+            android:id="@+id/line4"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/bottom_menu"
+            android:layout_alignTop="@+id/bottom_menu"
+            android:layout_toRightOf="@+id/bottom_submit"
+            android:background="#000000" />
+
+        <!-- 5. ic_launcher のアイコンと、その下に 最近 の文字を表示しているボタン -->
+
+        <RelativeLayout
+            android:id="@+id/bottom_recent"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/bottom_menu"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/bottom_menu"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/line4"
+            android:background="@drawable/button_state_list" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:drawableTop="@drawable/ic_launcher"
+                android:text="  最近 " />
+        </RelativeLayout>
+    </RelativeLayout>
+
     <!-- 条件: LinearLayout は一切使用しない -->
     <!-- Hint: 1. ボタンですが Button は使いません -->
     <!-- Hint: 2. ボタン用の背景は android:background="@drawable/button_state_list" にします -->
     <!-- Hint: 3. バッチ用の背景は android:background="@drawable/badge" にします -->
     <!-- Hint: 4. TextView には、文字の隣に drawable を表示する属性があります -->
 
+    <TextView
+        android:id="@+id/line5"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@+id/bottom_content"
+        android:background="#000000" />
+
     <!-- TODO: 上記の View の上に、お知らせを表示する View を配置する -->
+
+    <RelativeLayout
+        android:id="@+id/bottom_notice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/line5"
+        android:background="@drawable/notify_button_state_list"
+        android:padding="15dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:textColor="#ffffff"
+            android:text="30件のお知らせがあります" />
+
+    </RelativeLayout>
+
     <!-- Hint: 1. お知らせを表示する View の背景は android:background="@drawable/notify_button_state_list" にします -->
+
 </RelativeLayout>
