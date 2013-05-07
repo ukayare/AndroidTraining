@@ -1,60 +1,80 @@
-
 package jp.mixi.practice.res.string.med;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity implements TextWatcher {
-    public static final int TEXT_MAX_LENGTH = 100;
-    private int mClickCount = 0;
+	public static final int TEXT_MAX_LENGTH = 100;
+	private int mClickCount = 0;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		TextView countView = (TextView) findViewById(R.id.TextCounter);
+		String textCount = getString(R.string.text_counter, 0, 100);
+		countView.setText(textCount);
 
-    @Override
-    protected void onStart() {
-        super.onStart();
+	}
 
-        EditText text = (EditText) findViewById(R.id.TextInput);
-        text.addTextChangedListener(this);
-    }
+	@Override
+	protected void onStart() {
+		super.onStart();
 
-    @Override
-    protected void onStop() {
-        EditText text = (EditText) findViewById(R.id.TextInput);
-        text.removeTextChangedListener(this);
+		EditText text = (EditText) findViewById(R.id.TextInput);
+		text.addTextChangedListener(this);
+	}
 
-        super.onStop();
-    }
+	@Override
+	protected void onStop() {
+		EditText text = (EditText) findViewById(R.id.TextInput);
+		text.removeTextChangedListener(this);
 
-    @Override
-    public void afterTextChanged(Editable s) {}
+		super.onStop();
+	}
 
-    @Override
-    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+	@Override
+	public void afterTextChanged(Editable s) {
+	}
 
-    @Override
-    public void onTextChanged(CharSequence s, int start, int before, int count) {
-        TextView countView = (TextView) findViewById(R.id.TextCounter);
-        // TODO: フォーマット用の String リソース（text_counter）を取り出し、setText(CharSequence) の引数に渡す
-        countView.setText(null);
-    }
+	@Override
+	public void beforeTextChanged(CharSequence s, int start, int count,
+			int after) {
+	}
 
-    // Show Toast ボタンが押された
-    public void onConfirmClick(View v) {
-        EditText nameInput = (EditText) findViewById(R.id.NameInput);
-        String name = nameInput.getText().toString();
-        mClickCount++;
-        // TODO: フォーマット用の String リソース（toast_message）を取り出し、makeText(Context, CharSequence, int) の第 2 引数に渡す
-        Toast.makeText(this, "", Toast.LENGTH_LONG).show();
-    }
+	@Override
+	public void onTextChanged(CharSequence s, int start, int before, int count) {
+		TextView countView = (TextView) findViewById(R.id.TextCounter);
+		// TODO: フォーマット用の String リソース（text_counter）を取り出し、setText(CharSequence)
+		// の引数に渡す
+		
+		EditText textInput = (EditText) findViewById(R.id.TextInput);
+		String text = textInput.getText().toString();
+
+		
+		String textCount = getString(R.string.text_counter, text.length(), 100);
+		countView.setText(textCount);
+	}
+
+	// Show Toast ボタンが押された
+	public void onConfirmClick(View v) {
+		EditText nameInput = (EditText) findViewById(R.id.NameInput);
+		String name = nameInput.getText().toString();
+		if(name==null) return;
+		mClickCount++;
+		// TODO: フォーマット用の String リソース（toast_message）を取り出し、makeText(Context,
+		// CharSequence, int) の第 2 引数に渡す
+		String clickCount = getString(R.string.toast_message, name, mClickCount);
+		
+		Log.v("test", clickCount);
+		
+		Toast.makeText(this, clickCount, Toast.LENGTH_LONG).show();
+	}
 }
