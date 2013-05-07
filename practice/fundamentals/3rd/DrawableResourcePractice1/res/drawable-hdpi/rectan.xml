@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="ring"
+    android:thickness="1dip"
+    android:useLevel="false"
+    android:visible="true" >
+
+    <!-- solid: 塗りつぶし -->
+    <solid android:color="@color/Blue" />
+    <!-- stroke: 枠線 -->
+    <stroke
+        android:width="1dip"
+        android:color="@color/Red" />
+
+</shape>
