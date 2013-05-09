@@ -23,22 +23,4 @@ public class MainActivity extends Activity {
 		return true;
 	}
 
-	public void onConfigurationChanged(Configuration newConfig) {
-		super.onConfigurationChanged(newConfig);
-		
-		Button button = (Button)findViewById(R.id.dbutton);
-		
-		Log.v("orient", newConfig.orientation+"");
-
-		switch (newConfig.orientation) {
-		case Configuration.ORIENTATION_PORTRAIT:
-			Drawable drawable_v = getResources().getDrawable(R.drawable.rectan);
-			button.setBackgroundDrawable(drawable_v);
-			break;
-		case Configuration.ORIENTATION_LANDSCAPE:
-			Drawable drawable_h = getResources().getDrawable(R.drawable.rectan_horizon);
-			button.setBackgroundDrawable(drawable_h);
-			break;
-		}
-	}
 }

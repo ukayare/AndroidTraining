@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_pressed="true"><layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+            <item><shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle" android:thickness="1dip" android:useLevel="false" android:visible="true">
+
+                    <!-- solid: 塗りつぶし -->
+                    <solid android:color="@color/White" />
+                    <!-- stroke: 枠線 -->
+                    <stroke android:width="1dip" android:color="@color/Black" />
+                </shape></item>
+            <item><shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="ring" android:thickness="1dip" android:useLevel="false" android:visible="true">
+
+                    <!-- stroke: 枠線 -->
+                    <stroke android:width="1dip" android:color="@color/Green" />
+                </shape></item>
+        </layer-list></item>
+    <item android:state_focused="true"><layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+            <item><shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle" android:thickness="1dip" android:useLevel="false" android:visible="true">
+
+                    <!-- solid: 塗りつぶし -->
+                    <solid android:color="@color/Black" />
+                    <!-- stroke: 枠線 -->
+                    <stroke android:width="1dip" android:color="@color/Red" />
+                </shape></item>
+            <item><shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="ring" android:thickness="1dip" android:useLevel="false" android:visible="true">
+
+                    <!-- stroke: 枠線 -->
+                    <stroke android:width="1dip" android:color="@color/Red" />
+                </shape></item>
+        </layer-list></item>
+    <item><layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+            <item><shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle" android:thickness="1dip" android:useLevel="false" android:visible="true">
+
+                    <!-- solid: 塗りつぶし -->
+                    <solid android:color="@color/Gray" />
+                    <!-- stroke: 枠線 -->
+                    <stroke android:width="1dip" android:color="@color/Red" />
+                </shape></item>
+            <item><shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="ring" android:thickness="1dip" android:useLevel="false" android:visible="true">
+
+                    <!-- stroke: 枠線 -->
+                    <stroke android:width="1dip" android:color="@color/Red" />
+                </shape></item>
+        </layer-list></item>
+
+</selector>
