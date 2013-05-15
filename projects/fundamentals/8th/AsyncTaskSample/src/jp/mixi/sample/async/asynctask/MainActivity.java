@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
@@ -70,6 +71,9 @@ public class MainActivity extends Activity {
                 publishProgress();
                 Thread.sleep(2000L);
                 publishProgress();
+                
+                TextView tv = (TextView)findViewById(R.id.textview);
+                tv.setText("hogehoge");
             } catch (InterruptedException e) {
                 Log.e(MyAsyncTask.class.getSimpleName(), "thread interrupted: ", e);
             }
